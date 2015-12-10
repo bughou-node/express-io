@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var ejs = require('ejs');
+var path = require('path');
+var env = require('../config/env.js');
+var config = require('../config/config.js');
+
+var template = fs.readFileSync(
+  path.join(__dirname, '../config/nginx.conf'), 'utf8'
+);
+
+var conf = ejs.render(template, {
+  root_dir: path.join(__dirname, '../..'),
+  site_domain: config.site_domain,
+  app_port: config.app_port,
+  is_development: env.is_development
+});
+
+write_nginx_conf('/usr/local/nginx/conf/sites-enabled') ||
+write_nginx_conf('/etc/nginx/sites-enabled') ||
+console.error('write nginx conf failed');
+
+function write_nginx_conf(dir) {
+  if (!fs.existsSync(dir)) return;
+  fs.writeFileSync(
+    path.join(dir, config.site_domain), conf
+  );
+  return true;
+}
+
+

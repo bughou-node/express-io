@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+
+var mongodb = require('mongodb');
+var config = require('../config/config.js');
+
+mongodb.MongoClient.connect(config.mongo, function(err, db){
+  if (err) throw err;
+  
+  db.command({ isMaster: 1 }, function(err, result) {
+    if (err) throw err;
+    db.close();
+
+    var ip_port = result.primary ||
+      db.serverConfig.host + ':' + db.serverConfig.port;
+
+    var addr = ip_port  + '/' + db.databaseName;
+
+    require('child_process').spawn('mongo', [ addr ], { stdio: 'inherit' });
+  });
+});
+

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+dir=`dirname "$0"`
+
+if ! which nginx; then
+  # 超过3天没更新源
+  if test -n "`find /var/lib/apt/periodic/update-success-stamp -mtime +3`"; then
+    sudo apt-get update --fix-missing
+  fi
+  sudo apt-get install -y nginx
+fi
+
+sudo "$dir"/gen_nginx_conf
+
+sudo nginx -s reload
+

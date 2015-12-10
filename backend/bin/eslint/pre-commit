@@ -1,0 +1,12 @@
+#!/bin/bash
+
+files=`git diff --name-only --cached --diff-filter=ACM\
+  | egrep -v 'node_modules/' | egrep '\.js$'`
+
+
+if test -n "$files"; then 
+  eslint $files
+else
+  exit 0
+fi
+

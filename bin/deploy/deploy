@@ -1,0 +1,22 @@
+#!/bin/bash
+
+which pm2 || (echo "pm2 not installed!"; exit)
+
+./frontend/bin/assets_minify || (echo "assets_minify failed"; exit)
+git add . && git commit -am "assets_minify" && git pull origin HEAD && git push origin HEAD
+
+case $1 in
+  all)
+    pm2 deploy qa
+    pm2 deploy preview
+    ;;
+  qa)
+    pm2 deploy qa
+    ;;
+  preview)
+    pm2 deploy preview
+    ;;
+  *)
+    pm2 deploy qa
+    ;;
+esac

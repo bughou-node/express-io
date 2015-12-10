@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+var url = require('url');
+var config = require('../config/config.js');
+
+var c = url.parse(config.mysql);
+var auth = c.auth.split(':');
+
+require('child_process').spawn('mysql', [
+  '-h', c.hostname, '-P', c.port, '-u', auth[0], '-p' + auth[1],
+  '--pager=less -XS', c.pathname.substr(1)
+], { stdio: 'inherit' });
+

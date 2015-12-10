@@ -1,0 +1,5 @@
+#!/bin/bash
+
+commit=$(git commit-tree HEAD^{tree} -m 'drop history') || exit
+git reset --hard $commit  || exit
+git gc || exit
