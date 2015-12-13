@@ -4,5 +4,8 @@ html
     meta(charset="utf-8")
     title 聊天
   body
+    ul#messages-list
+    input#message-input
     script(src="/socket.io/socket.io.js")
-    script(src="/chat.js")
+    script(src="/js/jquery-1.11.3.js")
+    != js_tag("chat.js")

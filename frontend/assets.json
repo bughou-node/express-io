@@ -1,0 +1,8 @@
+{
+  "defaults": {
+    "options": {
+      "debug": true
+    }
+  },
+  "js/chat.js": {}
+}

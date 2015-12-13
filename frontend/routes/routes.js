@@ -9,10 +9,11 @@ module.exports = function (app, io) {
   io.on('connection', function (socket) {
     var ip = socket.conn.remoteAddress;
     socket.join(ip);
-    var room = socket.broadcast.to(ip);
+    var from = socket.broadcast.to(ip);
 
-    socket.on('message', function (data) {
-      room.emit('message', data);
+    socket.on('message', function (data, cb) {
+      from.emit('message', data);
+      cb();
     });
   });
 };
