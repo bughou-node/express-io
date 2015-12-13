@@ -1,0 +1,19 @@
+{
+  "defaults": {
+    "options": {
+      "debug": true,
+      "noParse": [
+        "jquery"
+      ]
+    },
+    "external": "jquery"
+  },
+  "js/chat.js": {
+    "mtime": "2015-12-12 16:04:06 +0800",
+    "md5": "657a26073d5c756f494b94e058c8c9db"
+  },
+  "css/chat.css": {
+    "mtime": "2015-12-12 16:04:06 +0800",
+    "md5": "fd8442c22393193da7c437d6c80f3ce5"
+  }
+}

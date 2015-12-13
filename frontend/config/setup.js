@@ -1,3 +1,5 @@
+var p = require('path');
+
 module.exports = setup;
 
 function setup (app) {
@@ -11,10 +13,11 @@ function setup (app) {
 }
 
 function setup_locals (app) {
-  app.locals.pretty      = true;
+  app.locals.pretty = true;
+  var assets = require('assets-tag')(p.join(__dirname, '../assets.json'));
+  app.locals.js_tag = assets.js_tag;
+  app.locals.css_tag = assets.css_tag;
   // app.locals.paginate    = require('paginate');
-  // app.locals.js_tag      = require('assets_compile').js_tag;
-  // app.locals.css_tag     = require('assets_compile').css_tag;
   app.locals.time_format = require('time_format');
 }
 

@@ -8,7 +8,7 @@ var handler = require('express_error_handler');
 var domain = handler.domain(server);
 app.use(domain);
 io.use(function (socket, next) {
-  domain(socket.request, socket.request.res, next);
+  domain(socket.request, socket.request.res, next, socket);
 });
 
 require('./frontend/config/setup.js')(app);
