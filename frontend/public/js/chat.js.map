@@ -1,13 +1,13 @@
 {
   "version": 3,
   "sources": [
-    "../../../../../../usr/local/lib/node_modules/assets-compile/node_modules/browserify/node_modules/browser-pack/_prelude.js",
+    "../../assets-compile/node_modules/browserify/node_modules/browser-pack/_prelude.js",
     "js/chat.js"
   ],
   "names": [],
   "mappings": "AAAA;ACAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA",
   "file": "generated.js",
-  "sourceRoot": "",
+  "sourceRoot": "/source-maps",
   "sourcesContent": [
     "(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\"function\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\"Cannot find module '\"+o+\"'\");throw f.code=\"MODULE_NOT_FOUND\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\"function\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})",
     "\nvar socket = io();\n\nvar $input = $('#message-input');\nvar $list = $('#messages-list');\n\nsocket.on('message', function (data) {\n  $list.append('<li>' + data + '</li>');\n});\n\n\n$input.keyup(function (e) {\n  if (e.keyCode !== 13) return;\n\n  var val = $input.val();\n  var $message = $(\n    '<li>' + val + '<img src=\"/img/loading.gif\"></li>'\n  ).appendTo($list);\n  $input.val('');\n\n  socket.emit('message', val, function () {\n    $message.children('img').remove();\n  });\n});\n"

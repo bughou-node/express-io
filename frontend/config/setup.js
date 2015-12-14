@@ -22,11 +22,8 @@ function setup_locals (app) {
 }
 
 function setup_static (app, dir) {
-  // app.use(require('serve-favicon')(dir  + 'public/favicon.ico'));
   var static = require('express').static;
   app.use(static(dir + 'public'));
-  // for assets source maps
-  app.use('/css', static(dir + 'css'));
-  app.use('/js', static(dir + 'js'));
+  app.use('/source-maps/css', static(dir + 'css'));
 }
 
