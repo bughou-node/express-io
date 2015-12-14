@@ -3,7 +3,7 @@ var app = require('express')();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
-var handler = require('express_error_handler');
+var handler = require('express-io-error-handler');
 
 var domain = handler.domain(server);
 app.use(domain);

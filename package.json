@@ -20,7 +20,7 @@
     "cookie-parser": "^1.4.0",
     "error-trace": ">=0.0.2",
     "express": "^4.13.3",
-    "express_error_handler": "0.0.1",
+    "express-io-error-handler": "0.0.4",
     "jade": "^1.11.0",
     "morgan": "^1.6.1",
     "node_env": "~0.0.1",
