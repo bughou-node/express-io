@@ -6,7 +6,7 @@ html
     != css_tag("chat.css")
   body
     ul#messages-list
-    input#message-input
+    div#message-input: textarea
     script(src="/socket.io/socket.io.js")
     script(src="/js/jquery-1.11.3.js")
     != js_tag("chat.js")

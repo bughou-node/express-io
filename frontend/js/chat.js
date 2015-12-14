@@ -1,7 +1,7 @@
 
 var socket = io();
 
-var $input = $('#message-input');
+var $input = $('#message-input textarea');
 var $list = $('#messages-list');
 
 socket.on('message', function (data) {
@@ -10,7 +10,7 @@ socket.on('message', function (data) {
 
 
 $input.keyup(function (e) {
-  if (e.keyCode !== 13) return;
+  if (!(e.keyCode === 13 && (e.ctrlKey || e.metaKey || e.altKey))) return;
 
   var val = $input.val();
   var $message = $(

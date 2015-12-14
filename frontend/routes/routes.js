@@ -1,6 +1,3 @@
-var trace = require('error-trace');
-
-/* eslint-disable */
 module.exports = function (app, io) {
   app.get('/', function(req, res, next) {
     res.render('chat');
@@ -16,4 +13,3 @@ module.exports = function (app, io) {
     });
   });
 };
-/* eslint-enable */
