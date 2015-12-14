@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": [
-    "../../assets-compile/node_modules/browserify/node_modules/browser-pack/_prelude.js",
+    "../../../../../../usr/local/lib/node_modules/assets-compile/node_modules/browserify/node_modules/browser-pack/_prelude.js",
     "js/chat.js"
   ],
   "names": [],
