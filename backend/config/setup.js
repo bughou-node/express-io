@@ -14,14 +14,11 @@ function setup (app, io) {
       middleware(socket.request, socket.request.res, next);
     });
   });
-  /*
-  io.use(function(socket, next) {
-    if (!socket.request.session.user_id) {
-      return next(new Error('not authorized'));
-    }
-    next();
-  });
- */
+
+  var uri = require('url').parse(require('./config.js')['redis']);
+  io.adapter(require('socket.io-redis')({
+    host: uri['hostname'], port: uri['port'] 
+  }));
 
   app.use(require('body-parser').urlencoded({ extended: false }));
   app.use(require('body-parser').json());
